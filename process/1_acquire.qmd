@@ -1,0 +1,67 @@
+---
+title: "Lab05: Harvesting research data"
+author: Lily
+date: 2024-02-28
+date-modified: today
+format:
+  html:
+    toc: true
+---
+
+## Data description
+
+<!--
+  - the nature of the data
+  - the source of the data
+  - the acquisition strategy that will be used
+  - the format of the data
+  - the license of the data
+
+-->
+
+The data that I'm downloading is the Switchboard Dialog Act Corpus. This corpus is a set of conversation...
+
+The data is in an archived file on the [LDC](https://catalog.ldc.upenn.edu/LDC97S62). In this case, I'm going to download unarchive, and save the contents of the corpus to the 'data/original/swda' directory.
+
+<!-- Note: the path from the current file is: '../data/original/swda/' -->
+
+```{r}
+# https://catalog.ldc.upenn.edu/docs/LDC97S62/swb1_dialogact_annot.tar.gz
+```
+
+```{r}
+#| label: setup-packages
+#| message: false
+
+
+# load packages
+library(dplyr)
+library(fs)
+```
+
+The first step in the process is to try out using 'download.file()' to acquire the archieved file.
+
+```{r}
+#| label: download-archieve-test
+
+# URL: https://catalog.ldc.upenn.edu/LDC97S62
+
+# Set 'url' to the file address
+file_url<- "https://catalog.ldc.upenn.edu/docs/LDC97S62/swb1_dialogact_annot.tar.gz"
+
+dest_file <- "../data/original/swda.tar.gz"
+
+download.file(url = file_url, destfile = dest_file)
+
+```
+
+Now the file is at '../data/orginal/swda.tar.gz'. Since it is an archived file, I will need to unarchive 'untar()' function from base R.
+
+
+```{r}
+#| label: unarchive-tes
+
+untar(tarfile = "../data/original/swda.tar.gz", exdir = "../data/original/swda")
+```
+
+
