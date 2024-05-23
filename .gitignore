@@ -6,3 +6,6 @@
 *.Rproj
 _*
 cite-packages.R
+
+# Added to avoid tracking of data files
+data/original/*

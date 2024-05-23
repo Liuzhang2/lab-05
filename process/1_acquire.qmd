@@ -19,49 +19,64 @@ format:
 
 -->
 
-The data that I'm downloading is the Switchboard Dialog Act Corpus. This corpus is a set of conversation...
+The data that I'm downloading is the Switchboard Dialog Act Corpus. This corpus is a set of conversation... <!-- you did not continue to describe this data. What I type in class is only a starting point! -->
 
-The data is in an archived file on the [LDC](https://catalog.ldc.upenn.edu/LDC97S62). In this case, I'm going to download unarchive, and save the contents of the corpus to the 'data/original/swda' directory.
+The data is in an archived file on the [LDC](https://catalog.ldc.upenn.edu/LDC97S62) website. In this case, I'm going to download unarchive, and save the contents of the corpus to the 'data/original/swda' directory.
 
 <!-- Note: the path from the current file is: '../data/original/swda/' -->
 
 ```{r}
-# https://catalog.ldc.upenn.edu/docs/LDC97S62/swb1_dialogact_annot.tar.gz
-```
-
-```{r}
 #| label: setup-packages
 #| message: false
-
 
 # load packages
 library(dplyr)
 library(fs)
 ```
 
-The first step in the process is to try out using 'download.file()' to acquire the archieved file.
+The first step in the process is to try out using `download.file()` to acquire the archieved file.
+
+<!-- Don't forget to both describe the process in prose and add code comments! -->
 
 ```{r}
 #| label: download-archieve-test
 
-# URL: https://catalog.ldc.upenn.edu/LDC97S62
-
 # Set 'url' to the file address
 file_url<- "https://catalog.ldc.upenn.edu/docs/LDC97S62/swb1_dialogact_annot.tar.gz"
 
+# Set 'destfile' to the location where the file will be saved
 dest_file <- "../data/original/swda.tar.gz"
 
+# Download the file
 download.file(url = file_url, destfile = dest_file)
-
 ```
 
-Now the file is at '../data/orginal/swda.tar.gz'. Since it is an archived file, I will need to unarchive 'untar()' function from base R.
-
+Now the file is at `../data/orginal/swda.tar.gz`. Since it is an archived file, I will need to unarchive 'untar()' function from base R.
 
 ```{r}
 #| label: unarchive-tes
 
+# Unarchive the file and extract the contents to the 'data/original/swda' directory
 untar(tarfile = "../data/original/swda.tar.gz", exdir = "../data/original/swda")
 ```
 
+<!-- A couple steps further to make this code more efficient and reproducible would be to:
 
+1. Create a control statment to check if the data is already downloaded, and if so, skip the download step. This would be useful if you are running the code multiple times and don't want to download the file every time.
+2. Download the original archive file to a temporary file. This would avoid writing the archive file to disk and then having the extracted data as well.
+
+
+Take a look at the code from Chapter 5 section 5.1.2, example 5.11 for an example of how to do these two steps.
+
+-->
+
+
+## Self-Assessment
+
+<!--
+
+You did not provide any self-assessment! This is the most important part of the lab. You need to reflect on the process and the code you wrote. What worked? What didn't? What did you learn? What would you do differently next time?
+
+Follow the prompts in the lab instructions every time!
+
+-->
